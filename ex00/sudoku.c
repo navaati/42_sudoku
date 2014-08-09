@@ -6,7 +6,7 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/09 23:06:00 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/09 23:56:49 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int 	sudoku(t_sudoku *sudoku)
 	/* deux cas de base */
 	if (case_vide == NULL)
 		return (1);
+	possibilités = trouve_possibilités(t_case, sudoku);
 	if (possibilités == 0)
 	{
 		return (-1);
 	}
 	
 	/* cas de récursion */
-	possibilités = trouve_possibilités(t_case, sudoku);
 	try = malloc(sarace);
 	pour_chaque_possibilité(possibilité_courante, possibilités)
 	{
