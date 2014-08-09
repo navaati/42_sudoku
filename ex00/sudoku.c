@@ -6,7 +6,11 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
+/*   Updated: 2014/08/10 00:18:26 by lgillot-         ###   ########.fr       */
 /*   Updated: 2014/08/09 23:56:49 by lgillot-         ###   ########.fr       */
+=======
+/*   Updated: 2014/08/09 23:56:09 by lgillot-         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +25,28 @@ int 	sudoku(t_sudoku *sudoku)
 	t_case	possibilités;
 	t_case	possibilité_courante;
 	int		une_seule;
-	sudoku	*try;
+	sudoku	try;
 	
-	case_vide = trouve_case_vide(sudoku);
+	case_vide = trouve_case_vide(&sudoku);
 	/* deux cas de base */
-	if (case_vide == NULL)
+	if (case_vide == NULL) // On est au bout du tableau, le sudoku est complet
 		return (1);
 	possibilités = trouve_possibilités(t_case, sudoku);
-	if (possibilités == 0)
+	if (possibilités == 0) // Ou alors on ne trouve aucune possibilité, on fail 
 	{
 		return (-1);
 	}
 	
 	/* cas de récursion */
-	try = malloc(sarace);
 	pour_chaque_possibilité(possibilité_courante, possibilités)
 	{
-		copy(try, sudoku);
 		*case_vide = possibilité_courante;
-		if (sudoku(try) == 1)
+		try = *sudoku;
+		if (sudoku(&try) == 1)
 		{
-			copy(sudoku,try);
-			free(try);
+			*sudoku = try;
 			return(1);
 		}
 	}
-	free(try);
 	return(-1);
 }
