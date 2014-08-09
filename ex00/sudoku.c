@@ -6,7 +6,7 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 00:27:34 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 01:46:34 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int 	sudoku(t_sudoku *sudoku)
 	t_case	*case_vide;
 	t_case	possibilités;
 	t_case	possibilité_courante;
-	int		une_seule;
 	sudoku	try;
 	
 	case_vide = trouve_case_vide(&sudoku);
