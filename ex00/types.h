@@ -6,12 +6,12 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 17:41:39 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 00:04:59 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 01:37:59 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITFIELD_H
-# define BITFIELD_H
+#ifndef TYPES_H
+# define TYPES_H
 
 # include <stdint.h>
 
