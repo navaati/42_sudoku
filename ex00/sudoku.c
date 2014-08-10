@@ -6,21 +6,22 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 16:51:53 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 17:18:16 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "sudoku.h"
 
-t_case	*next_empty_cell(const t_sudoku *sudoku)
+t_case	*next_empty_cell(t_sudoku *sudoku)
 {
 	t_case *curr_cell;
 
-	curr_case = &(sudoku->array);
-	while (curr_case < (void*)sudoku + sizeof(sudoku->a))
+	curr_cell = &(sudoku->a[0][0]);
+	while ((void*)curr_cell < (void*)sudoku + sizeof(sudoku->a))
 	{
-		if (*curr_case == 0)
-			return (curr_case);
+		if (*curr_cell == 0)
+			return (curr_cell);
 	}
 	return (NULL);
 }
@@ -36,14 +37,21 @@ t_case	next_possible_val(t_case current_val, const t_possibilities possible_vals
 	return (current_val);
 }
 
-int 	sudoku(t_sudoku *sudoku)
+t_possibilities lookup_possibilities(t_case *empty_cell, t_sudoku *sudoku)
+{
+	(void)empty_cell;
+	(void)sudoku;
+	return (0);
+}
+
+int 	solve_sudoku(t_sudoku *sudoku)
 {
 	t_case	*empty_cell;
 	t_case	possible_vals;
 	t_case	curr_val;
-	sudoku	try;
+	t_sudoku	try;
 	
-	empty_cell = next_empty_cell(&sudoku);
+	empty_cell = next_empty_cell(sudoku);
 	/* two base case */
 	if (empty_cell == NULL) // We're at end of array, sudoku is complete
 		return (1);
@@ -55,11 +63,11 @@ int 	sudoku(t_sudoku *sudoku)
 	
 	/* recursion case : we fill the cell with an unsure value and we recurse */
 	curr_val = 0;
-	while (curr_val = next_possible_val(curr_val, possible_vals))
+	while ((curr_val = next_possible_val(curr_val, possible_vals)) != 0)
 	{
-		*empty_cell = current_val;
+		*empty_cell = curr_val;
 		try = *sudoku;
-		if (sudoku(&try) == 1) // If the recursive-us succeeds...
+		if (solve_sudoku(&try) == 1) // If the recursive-us succeeds...
 		{
 			*sudoku = try;
 			return(1); // ...we were right and we're done
