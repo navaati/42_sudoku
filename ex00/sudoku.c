@@ -6,7 +6,7 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 23:19:29 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 23:31:29 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,40 @@ t_cell	next_possible_val(t_cell current_val, const t_possibilities possible_vals
 	return (current_val);
 }
 
-t_possibilities lookup_possibilities(t_cell *empty_cell, t_sudoku *sudoku, int column, int line)
+t_possibilities lookup_possibilities(t_sudoku *sudoku, int col, int line)
 {
-	(void)empty_cell;
-	(void)sudoku;
-	return (0);
+	t_possibilities poss;
+	int x;
+	int y;
+	
+	poss = 0;
+	x = col;
+	y = 0;
+	while (y < 9)
+	{
+		poss = poss | sudoku->a[y][x];
+		y++;
+	}
+	y = line;
+	x = 0;
+	while (x < 9)
+	{
+		poss = poss | sudoku->a[y][x];
+		x++;
+	}
+	x = col / 3;
+	y = line / 3;
+	while (y < (line / 3 + 1) * 3)
+	{
+		while (x < (col / 3 + 1) * 3)
+		{
+			poss = poss | sudoku->a[y][x];
+			x++;
+		}
+		x = col / 3;
+		y++;
+	}
+	return (~poss) & 511;
 }
 
 int 	solve_sudoku(t_sudoku *sudoku)
@@ -63,7 +92,7 @@ int 	solve_sudoku(t_sudoku *sudoku)
 	/* two base case */
 	if (empty_cell == NULL) // We're at end of array, sudoku is complete
 		return (1);
-	possible_vals = lookup_possibilities(empty_cell, sudoku, x, y);
+	possible_vals = lookup_possibilities(sudoku, x, y);
 	if (possible_vals == 0) // Or there is no possible value for this cell, we fail
 	{
 		return (-1);

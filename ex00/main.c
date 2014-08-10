@@ -6,11 +6,11 @@
 /*   By: esanchez <esanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/10 17:36:41 by esanchez          #+#    #+#             */
-/*   Updated: 2014/08/10 19:56:50 by esanchez         ###   ########.fr       */
+/*   Updated: 2014/08/10 23:37:40 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
 #include "io.h"
 #include "types.h"
