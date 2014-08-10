@@ -6,7 +6,7 @@
 /*   By: esanchez <esanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/10 19:09:47 by esanchez          #+#    #+#             */
-/*   Updated: 2014/08/10 20:31:49 by esanchez         ###   ########.fr       */
+/*   Updated: 2014/08/10 22:54:05 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int parse(char **argv, t_sudoku *sudoku)
 			c = (argv[y])[x];
 			if((c >= '1' && c <= '9') || c == '.')
 			{
-				sudoku->a[x][y] = char_to_cell(c);
+				sudoku->a[y][x] = char_to_cell(c);
 			}
 			else
 				return (-1);
