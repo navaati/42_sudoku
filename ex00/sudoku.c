@@ -6,13 +6,21 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 02:16:36 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 02:30:44 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_case	*next_empty_cell(t_sudoku *sudoku)
+t_case	*next_empty_cell(const t_sudoku *sudoku)
 {
-	// boucle while
+	t_case *curr_cell;
+
+	curr_case = &(sudoku->array);
+	while (curr_case < (void*)sudoku + sizeof(sudoku->a))
+	{
+		if (*curr_case == 0)
+			return (curr_case);
+	}
+	return (NULL);
 }
 
 t_case	next_possible_val(t_case current_val, const t_possibilities possible_vals)
