@@ -6,7 +6,7 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 18:30:32 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 23:00:51 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 t_cell	*next_empty_cell(t_sudoku *sudoku)
 {
 	t_cell *curr_cell;
+	t_cell *end;
 
 	curr_cell = &(sudoku->a[0][0]);
-	while ((void*)curr_cell < (void*)sudoku + sizeof(sudoku->a))
+	end = curr_cell + 9 * 9;
+	while (curr_cell < end)
 	{
 		if (*curr_cell == 0)
 			return (curr_cell);
+		curr_cell++;
 	}
 	return (NULL);
 }
