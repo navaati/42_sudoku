@@ -6,13 +6,24 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 02:04:58 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 02:16:36 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 t_case	*next_empty_cell(t_sudoku *sudoku)
 {
 	// boucle while
+}
+
+t_case	next_possible_val(t_case current_val, const t_possibilities possible_vals)
+{
+	if (current_val == 0)
+		current_val = 1;
+	else
+		current_val <<= 1;
+	while (current_val != 0 && (current_val & possible_vals) == 0)
+		current_val <<= 1;
+	return (current_val);
 }
 
 int 	sudoku(t_sudoku *sudoku)
@@ -33,7 +44,8 @@ int 	sudoku(t_sudoku *sudoku)
 	}
 	
 	/* recursion case : we fill the cell with an unsure value and we recurse */
-	for_each_possibility(curr_val, possible_vals)
+	curr_val = 0;
+	while (curr_val = next_possible_val(curr_val, possible_vals))
 	{
 		*empty_cell = current_val;
 		try = *sudoku;
