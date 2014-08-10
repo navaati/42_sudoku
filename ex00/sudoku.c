@@ -6,16 +6,16 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 17:18:16 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 18:30:32 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "sudoku.h"
 
-t_case	*next_empty_cell(t_sudoku *sudoku)
+t_cell	*next_empty_cell(t_sudoku *sudoku)
 {
-	t_case *curr_cell;
+	t_cell *curr_cell;
 
 	curr_cell = &(sudoku->a[0][0]);
 	while ((void*)curr_cell < (void*)sudoku + sizeof(sudoku->a))
@@ -26,7 +26,7 @@ t_case	*next_empty_cell(t_sudoku *sudoku)
 	return (NULL);
 }
 
-t_case	next_possible_val(t_case current_val, const t_possibilities possible_vals)
+t_cell	next_possible_val(t_cell current_val, const t_possibilities possible_vals)
 {
 	if (current_val == 0)
 		current_val = 1;
@@ -37,7 +37,7 @@ t_case	next_possible_val(t_case current_val, const t_possibilities possible_vals
 	return (current_val);
 }
 
-t_possibilities lookup_possibilities(t_case *empty_cell, t_sudoku *sudoku)
+t_possibilities lookup_possibilities(t_cell *empty_cell, t_sudoku *sudoku)
 {
 	(void)empty_cell;
 	(void)sudoku;
@@ -46,9 +46,9 @@ t_possibilities lookup_possibilities(t_case *empty_cell, t_sudoku *sudoku)
 
 int 	solve_sudoku(t_sudoku *sudoku)
 {
-	t_case	*empty_cell;
-	t_case	possible_vals;
-	t_case	curr_val;
+	t_cell	*empty_cell;
+	t_cell	possible_vals;
+	t_cell	curr_val;
 	t_sudoku	try;
 	
 	empty_cell = next_empty_cell(sudoku);
