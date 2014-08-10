@@ -6,7 +6,7 @@
 /*   By: esanchez <esanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/10 17:36:41 by esanchez          #+#    #+#             */
-/*   Updated: 2014/08/10 18:48:12 by esanchez         ###   ########.fr       */
+/*   Updated: 2014/08/10 19:56:50 by esanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		error();
 		return (1);
 	}
-	if (parse(argv, &sudoku) == -1)
+	if (parse(argv+1, &sudoku) == -1)
 	{
 		error();
 		return (1);
