@@ -6,9 +6,11 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 02:30:44 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/10 16:51:53 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "sudoku.h"
 
 t_case	*next_empty_cell(const t_sudoku *sudoku)
 {
