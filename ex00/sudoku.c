@@ -6,7 +6,7 @@
 /*   By: lgillot- <lgillot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/09 22:07:26 by lgillot-          #+#    #+#             */
-/*   Updated: 2014/08/10 23:31:29 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/11 10:58:44 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_possibilities lookup_possibilities(t_sudoku *sudoku, int col, int line)
 	t_possibilities poss;
 	int x;
 	int y;
+	int x_bloc;
+	int y_bloc;
 	
 	poss = 0;
 	x = col;
@@ -64,16 +66,18 @@ t_possibilities lookup_possibilities(t_sudoku *sudoku, int col, int line)
 		poss = poss | sudoku->a[y][x];
 		x++;
 	}
-	x = col / 3;
-	y = line / 3;
-	while (y < (line / 3 + 1) * 3)
+	x_bloc = (col / 3) * 3;
+	y_bloc = (line / 3) * 3;
+	x = x_bloc;
+	y = y_bloc;
+	while (y < y_bloc + 3)
 	{
-		while (x < (col / 3 + 1) * 3)
+		while (x < x_bloc + 3)
 		{
 			poss = poss | sudoku->a[y][x];
 			x++;
 		}
-		x = col / 3;
+		x = x_bloc;
 		y++;
 	}
 	return (~poss) & 511;
