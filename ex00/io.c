@@ -6,7 +6,7 @@
 /*   By: esanchez <esanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/08/10 19:09:47 by esanchez          #+#    #+#             */
-/*   Updated: 2014/08/10 23:37:16 by lgillot-         ###   ########.fr       */
+/*   Updated: 2014/08/11 10:42:05 by lgillot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char cell_to_char(t_cell cell)
 {
 	int i;
 
+	if (cell == 0)
+		return ('.');
 	i = 0;
 	while (cell != 1)
 	{
@@ -52,8 +54,8 @@ void display(t_sudoku *sudoku)
 	{
 		while (x < 9)
 		{
-			pc(sudoku->a[y][x]);
-			if(x == 9)
+			pc(cell_to_char(sudoku->a[y][x]));
+			if (x == 8)
 				pc('\n');
 			else
 				pc(' ');
